@@ -1,6 +1,6 @@
 <?php
     require_once 'IAPI.php';
-    require_once 'DB/DBConnector.php';
+    require_once 'DB/DBHelper.php';
 
     class API implements IAPI {
 
@@ -10,20 +10,38 @@
             return $result;
         }
 
-        public function addPost($Post) {
+        public function addPost($post) {
             $result = new Status();
+
+            $DB = new DBHelper();
+
+            // TODO:
+            $query = 'INSERT INTO TODO SET id = ' . $post->id . ', category = ' . $post->category;
+
+            if ($DB->queryExec($query, true)) {
+
+            }
 
             return $result;
         }
 
-        public function deletePost($Id) {
+        public function deletePost($id) {
             $result = new Status();
+
+
+
+            $DB = new DBHelper();
+            $query = "DELETE FROM post WHERE id = '$id'";
+
+            $DB->queryExec($query, false);
 
             return $result;
         }
 
         public function updatePost($Post) {
             $result = new Status();
+
+
 
             return $result;
         }

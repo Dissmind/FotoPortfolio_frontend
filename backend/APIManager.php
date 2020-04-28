@@ -23,11 +23,12 @@ switch ($typeRequest) {
         $post->id       = $_GET['id'];
         $post->category = $_GET['category'];
         $post->desc     = $_GET['desc'];
-        $post->urlImg   = $_GET['category'];
+        $post->urlImg   = $_GET['urlImg'];
 
         $API->addPost($post);
         break;
 
+        // http://photoportfolio/backend/apiManager.php?typeRequest=deletePost&id=1
     case 'deletePost':
         $id = $_GET['id'];
 
@@ -52,7 +53,7 @@ switch ($typeRequest) {
     case 'getPost':
         $id = $_GET['id'];
 
-        $API->getPost();
+        $API->getPost($id);
         break;
 }
 
