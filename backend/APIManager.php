@@ -20,28 +20,35 @@ switch ($typeRequest) {
     case 'addPost':
         $post = new Post();
 
-        $post->id       = $_GET['id'];
-        $post->category = $_GET['category'];
-        $post->desc     = $_GET['desc'];
-        $post->urlImg   = $_GET['urlImg'];
+        $post->title           = $_GET['title'];
+        $post->category        = $_GET['idCategory'];
+        $post->description     = $_GET['description'];
+        $post->urlImg          = $_GET['imgURL'];
 
-        $API->addPost($post);
+        echo $post->id . '<br />';
+        echo $post->title . '<br />';
+        echo $post->category . '<br />';
+        echo $post->description . '<br />';
+        echo $post->urlImg . '<br />';
+
+
+        echo $API->addPost($post);
         break;
 
-        // http://photoportfolio/backend/apiManager.php?typeRequest=deletePost&id=1
     case 'deletePost':
         $id = $_GET['id'];
 
         $API->deletePost($id);
+
         break;
 
     case 'updatePost':
         $post = new Post();
 
-        $post->id       = $_GET['id'];
-        $post->category = $_GET['category'];
-        $post->desc     = $_GET['desc'];
-        $post->urlImg   = $_GET['category'];
+//        $post->id       = $_GET['id'];
+//        $post->category = $_GET['category'];
+//        $post->desc     = $_GET['desc'];
+//        $post->urlImg   = $_GET['category'];
 
         $API->updatePost($post);
         break;
@@ -53,7 +60,9 @@ switch ($typeRequest) {
     case 'getPost':
         $id = $_GET['id'];
 
-        $API->getPost($id);
+        echo $API->getPost($id);
+
+        echo 'test';
         break;
 }
 

@@ -16,19 +16,24 @@
             $DB = new DBHelper();
 
             // TODO:
-            $query = 'INSERT INTO TODO SET id = ' . $post->id . ', category = ' . $post->category;
+            //$query = "INSERT INTO 'post' ('id', 'title', 'description', 'idCategory', 'imgURL') VALUES (NULL, 'test_title', 'test_description', 3, 'img_url')";
 
-            if ($DB->queryExec($query, true)) {
+//            $query = "INSERT INTO `post` (`id`, `title`, `description`, `idCategory`, `imgURL`) VALUES (NULL, `$post->title`, `$post->description`, `$post->category`, `$post->urlImg`)";
+            $query = "INSERT INTO `post` (`id`, `title`, `description`, `idCategory`, `imgURL`) 
+                        VALUES (NULL, 
+                        '" . $post->title . "' , 
+                        '" . $post->description . "', 
+                        '" . $post->category . "', 
+                        '" . $post->urlImg . "')";
+//            $query = "INSERT INTO `post` (`id`, `title`, `description`, `idCategory`, `imgURL`) VALUES (NULL, 'test' , 'testDesc', '2', 'testURL')";
+            
+            $DB->queryExec($query, false);
 
-            }
-
-            return $result;
+            return $query;
         }
 
         public function deletePost($id) {
             $result = new Status();
-
-
 
             $DB = new DBHelper();
             $query = "DELETE FROM post WHERE id = '$id'";
@@ -52,8 +57,16 @@
             return $result;
         }
 
-        public function getPost($CategoryId) {
+        public function getPost($categoryId) {
             $result = new Post();
+
+            $DB = new DBHelper();
+
+            $query = "SELECT * FROM post WHERE id = $categoryId";
+
+            $dbResult = $DB->queryExec($query, true);
+
+            $result = $dbResult['description'];
 
             return $result;
         }
