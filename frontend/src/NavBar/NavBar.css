@@ -6,5 +6,6 @@
     width: 20%;
     height: 100vh;
 
-    background: red;
+    background: white;
+    border-right: black solid .5px;
 }

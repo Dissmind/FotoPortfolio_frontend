@@ -1,15 +1,7 @@
 import * as React from "react";
 
-import ActualData from "../../ActualData";
-
 
 class ChooseGroupButton extends React.Component {
-
-    // changeActulaTitle = () => {
-    //     console.log(ActualData.title)
-    //     ActualData.title = this.props.category
-    // }
-
     render() {
         return(
             <div>
