@@ -22,7 +22,7 @@ class DBHelper extends DBInfo {
 //        }
 
         if($isSelectQuery) {
-            return mysqli_fetch_all($result, MYSQLI_ASSOC);
+            return mysqli_fetch_all($result);
         }
     }
 

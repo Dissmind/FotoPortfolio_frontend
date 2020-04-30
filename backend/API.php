@@ -54,6 +54,11 @@
         public function getCategoryAll() {
             $result = array(/*Category*/);
 
+            $DB = new DBHelper();
+            $query = "SELECT * FROM post";
+
+            $result = $DB->queryExec($query,true);
+
             return $result;
         }
 
@@ -62,11 +67,15 @@
 
             $DB = new DBHelper();
 
-            $query = "SELECT * FROM post WHERE id = $categoryId";
+            $query = "SELECT * FROM post WHERE id =" . $categoryId;
 
-            $dbResult = $DB->queryExec($query, true);
+            $data = $DB->queryExec($query, true);
 
-            $result = $dbResult['description'];
+            $result->id = $categoryId;
+            $result->title = $data[0][1];
+            $result->category = $data[0][2];
+            $result->description = $data[0][3];
+            $result->urlImg = $data[0][4];
 
             return $result;
         }

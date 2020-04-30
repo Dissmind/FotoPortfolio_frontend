@@ -6,6 +6,9 @@ $typeRequest = $_GET['typeRequest'];
 
 $API = new API();
 
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
 switch ($typeRequest) {
     case 'authorization':
 
@@ -54,15 +57,19 @@ switch ($typeRequest) {
         break;
 
     case 'getCategoryAll':
-        $API->getCategoryAll();
+        $data = $API->getCategoryAll();
+
+
+
         break;
 
     case 'getPost':
         $id = $_GET['id'];
 
-        echo $API->getPost($id);
+        $data = $API->getPost($id);
 
-        echo 'test';
+        echo json_encode($data);
+
         break;
 }
 
