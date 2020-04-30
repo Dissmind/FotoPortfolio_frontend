@@ -4,9 +4,7 @@ import * as React from "react";
 class Post extends React.Component {
     render() {
         return(
-            <div>
-                <img width={"25%"} src={this.props.imgUrl} alt=""/>
-            </div>
+            <img width={this.props.width} src={this.props.imgUrl} alt=""/>
         )
     }
 }
